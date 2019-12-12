@@ -58,10 +58,10 @@ class Murid extends React.Component {
         <Box component="div" className={classes.title}>
           <Typography variant="h4" component="h3" align="center">
             Data Murid
-      </Typography>
+          </Typography>
           <hr />
         </Box>
-        <Paper className={classes.root}>
+        <Paper >
           <div className={classes.tableWrapper}>
             <Table>
               <TableHead>

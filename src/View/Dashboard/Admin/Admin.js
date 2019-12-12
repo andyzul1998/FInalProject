@@ -1,12 +1,16 @@
-import React from 'react';
-import { Styles } from './Style';
-import { NavLink } from "react-router-dom";
-import { withStyles, Grid, CssBaseline, Paper } from '@material-ui/core'
-import { Route, Switch } from 'react-router-dom';
+import React,{Component} from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { Route, Switch } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import Dashboard from './Dashboard'
 import Murid from './dataMurid'
 import Sponsor from './dataSponsor'
@@ -32,16 +36,34 @@ import editSliders from './Edit Data/editSliders'
 import editSponsor from './Edit Data/editSponsor'
 import editTestimoni  from './Edit Data/editTestimoni'
 
-class rootAdmin extends React.Component {
-  render() {
-    const { classes } = this.props
-    return (     
-      <React.Fragment>
-        <CssBaseline />
-        <Grid container spacing={6}>
-          <Grid item md={3} xs={12} lg={3}>
-            <Paper className={classes.gridPaper}>
-              <List>
+import {Styles} from './Style.js'
+
+
+class rootAdmin extends Component {
+  render(){
+  const {classes} = this.props
+
+  return (
+    <div className={classes.rootUtama}>
+      <CssBaseline />
+      <AppBar position="fixed" className={classes.appBar}>
+        <Toolbar>
+          <Typography variant="h6" noWrap>
+            Dashboard Admin
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        className={classes.drawer}
+        variant="permanent"
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+        anchor="left"
+      >
+        <div className={classes.toolbar} />
+        <Divider />
+        <List>
                 <NavLink to="/dashboard-admin" className={classes.link}>
                   <ListItem button>
                     <ListItemText primary="Dashboard" />
@@ -68,8 +90,8 @@ class rootAdmin extends React.Component {
                   </ListItem>
                 </NavLink>
               </List>
-              <Divider />
-              <List>
+        <Divider />
+        <List>
                 <NavLink to="/dashboard-admin/data-jurusan" className={classes.link}>
                   <ListItem button>
                     <ListItemText primary="Jurusan" />
@@ -96,10 +118,10 @@ class rootAdmin extends React.Component {
                   </ListItem>
                 </NavLink>
               </List>
-            </Paper>
-          </Grid>
-          <Grid item md={9} xs={12} lg={9}>
-            <Switch>
+      </Drawer>
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
+        <Switch>
               <Route path="/dashboard-admin/" exact component={Dashboard} />
               <Route path="/dashboard-admin/data-murid" exact component={Murid} />
               <Route path="/dashboard-admin/data-sponsor" exact component={Sponsor} />
@@ -125,11 +147,10 @@ class rootAdmin extends React.Component {
               <Route path="/dashboard-admin/data-sponsor/edit-sponsor/:_id" component={editSponsor} />
               <Route path="/dashboard-admin/data-testimoni/edit-testimoni/:_id" component={editTestimoni} />
             </Switch>
-          </Grid>
-        </Grid>
-      </React.Fragment >
-    );
-  }
+      </main>
+    </div>
+  );
+}
 }
 
-export default withStyles(Styles)(rootAdmin);
+export default withStyles(Styles)(rootAdmin)

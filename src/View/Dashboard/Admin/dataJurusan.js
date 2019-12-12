@@ -25,6 +25,14 @@ class Jurusan extends React.Component{
     }
   }
 
+  hapus = (_id) => {
+    fetch(`https://apismk.herokuapp.com/jurusan/${_id}`, {
+      method: 'DELETE'
+    })
+      .then(response => response.json())
+      .then(json => console.log(json))
+  }
+
   componentDidMount() {
     fetch("https://apismk.herokuapp.com/jurusan") //fetch API Sliders
       .then(result => result.json())
@@ -71,11 +79,13 @@ class Jurusan extends React.Component{
                   <TableCell align="center" className={classes.textTable}>{item.nama_jurusan}</TableCell>
                   <TableCell align="center" className={classes.textTable}><Img className={classes.img} src={`${item.image_jurusan}`} alt="banner" /></TableCell>
                   <TableCell align="center">
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      startIcon={<DeleteIcon />}
-                    >Delete</Button>
+                  <Button
+                        variant="contained"
+                        color="secondary"
+                        startIcon={<DeleteIcon />}
+                        onClick={() => this.hapus(item._id)}
+
+                      >Delete</Button>
                     <Button
                       variant="contained"
                       color="primary"

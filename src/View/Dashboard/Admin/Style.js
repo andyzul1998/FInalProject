@@ -1,15 +1,25 @@
-export const Styles = theme => ({
-  root: {
-      flexWrap: 'wrap'
-  },
-  appBar : {
-      borderBottom: `1px solid ${theme.palette.divider}`,
-      // backgroundColor: 'red',
-      backgroundImage:'linear-gradient(to top, #00000000 0, #2d2d2d 130%)'
+const drawerWidth = 240;
 
+export const Styles = theme => ({
+  rootUtama: {
+    display: 'flex'
   },
-  toolbar: {
-      flexWrap: 'wrap',
+  appBar: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+   width:'100%',
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
   },
 
   gridLogo : {
@@ -97,5 +107,16 @@ export const Styles = theme => ({
   submit: {
       margin: theme.spacing(3, 0, 2),
     },
+    //Dashboard
+    gridItem:{
+      border:'3px solid black',
+      borderRadius:10
+    },
+  gridDash:{
+    display: 'flex',
+    alignItems:'center',
+    borderBottom:'3px solid',
+  },
+
 }); 
 

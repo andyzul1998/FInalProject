@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {Container,Grid,Typography,withStyles,Button,TextField,Box,Card,CardContent,CardActions,CardMedia,CardHeader} from '@material-ui/core'
+import {Container,Grid,Typography,withStyles,Card,CardContent,CardMedia} from '@material-ui/core'
 import {Styles} from './Style';
+import Moment from 'react-moment'
 
 class DetailNews extends Component {
     constructor(props){
@@ -45,8 +46,13 @@ class DetailNews extends Component {
                             title="Image title"
                         />
                         <CardContent className={classes.cardContent}>
+                            <Typography>
+                                {detailNews.author}
+                            </Typography>
                             <Typography className={classes.tanggal}>
-                                Post : {detailNews.timestamp} 
+                            <Moment format="D MMM YYYY" withTitle>
+                                {detailNews.createdAt}
+                            </Moment>
                             </Typography>
                             <Typography variant="h4" component="h1">
                                 {detailNews.judul_news}

@@ -202,7 +202,7 @@ class tambahMurid extends Component {
                                         id="jurusan"
                                         name="jurusan"
                                         onChange={this.changeHandler}
-                                        value=""
+                                        
                                     >
                                         {namaJurusan.map((item, i) => (
                                             <MenuItem key={i} value={item.nama_jurusan}>{item.nama_jurusan}</MenuItem>

@@ -1,22 +1,28 @@
 export const Styles = theme => ({
-      footer1:{
+      footerCont:{
+        marginTop:20
 
       },
-      footer2:{
+      footerGrid:{
+        borderRight:'2px solid',
+        padding:10,
+        marginTop:10
 
       },
-      footer3:{
-        
-
+     
+      box:{
+        display:'flex',
+        justifyContent:'flex-end',
+        marginBottom:10
       },
-      footer4:{
-        alignItems: 'center',
-        height: 200,
-        display: 'flex',
-        justifyContent:'flex-end' 
-    
-    
-
+      Judul:{
+        borderBottom:'1px solid',
+        display:'flex',
+        justifyContent:'center'
+      },
+      isi:{
+        fontSize:20,
+        padding:10
       }
       }); 
 
