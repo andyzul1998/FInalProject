@@ -55,7 +55,7 @@ class tambahMurid extends Component {
         data.append('email', this.state.email)
         data.append('password', this.state.password)
         data.append('no_telpon', this.state.no_telpon)
-        data.append('image', this.uploadInput.files[0])
+        data.append('foto_siswa', this.uploadInput.files[0])
         data.append('jurusan', this.state.jurusan)
 
         fetch('https://apismk.herokuapp.com/siswa', {

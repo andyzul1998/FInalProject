@@ -6,29 +6,46 @@ class DetailJurusan extends Component {
     constructor(props){
         super(props);
         this.state = {
+            id:this.props.match.params._id,
+            jurusan:[]
         };
         
     }
+
+    componentDidMount() {
+        fetch(`http://apismk.herokuapp.com/jurusan/${this.state.id}`)
+          .then(res => res.json())
+          .then(
+            (data) => {
+              this.setState({
+                jurusan: data
+              });
+            },                
+            (error) => {
+              console.log(error)   
+            }
+          )
+      }
+
     render() {
         const {classes}= this.props
+        const {jurusan} = this.state
         return (
                 <Container fixed className={classes.cardGrid}  style={{marginTop:10}}>
                    <Typography variant="h4" component="h1" className={classes.page}>Detail Jurusan</Typography>
                     <Card className={classes.card}>
                         <CardHeader
-                            title="Jurusan"
+                            title={jurusan.nama_jurusan}
                             align="center"
                             />
                         <CardMedia
                             className={classes.cardMedia}
-                            image={require("../../Images/sea.jpg")}
+                            image={jurusan.image_jurusan}
                             title="Image title"
                         />
                         <CardContent className={classes.cardContent}>
                             <Typography>
-                               Deksripsi dari jurusan sadjklajdkljaskd jsanja jshadkjhasdjkdash kdjklajsdklasj jsadkljsadkljsakljd ilsajdkljaskldjaskld klsjdkljasdkljasd
-                               asjdkjasdlkjkasdj kasjdlkajsdkljaskld ksajdkljasdkljasd kjsadkjaskdjklasdj lkasjdksajdklsajnsandjsa sjadklasjdkljsa 
-                               jkashdjkashdjhds
+                               {jurusan.deskripsi_jurusan}
                             </Typography>
                         </CardContent>
                     </Card>

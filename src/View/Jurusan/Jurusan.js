@@ -7,40 +7,55 @@ class Jurusan extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [1, 2, 3]
+            jurusan:[]
         };
 
     }
+
+    componentDidMount() {
+        fetch("http://apismk.herokuapp.com/jurusan") //fetch API News
+            .then(result => result.json())
+            .then(
+                (data) => {
+                    this.setState({
+                        jurusan: data
+                    });
+                    console.log(this.state.jurusan)
+                },
+                (error) => {
+                    console.log(error)
+                }
+            )
+    }
+
     render() {
-        const item = this.state.items
+        const {jurusan} = this.state
         const { classes } = this.props
         return (
             <Container fixed className={classes.cardGrid} style={{ marginTop: 10 }}>
                 <Typography variant="h4" component="h1" className={classes.page}>Jurusan</Typography>
                 <Grid container spacing={2}>
-                    {item.map(card => (
-                        <Grid item md={12} xs={12} lg={12} key={card}>
-
+                    {jurusan.map((card,i) => (
+                        <Grid item md={12} xs={12} lg={12} key={i}>
                             <Card className={classes.card}>
                                 <Grid item md={7} xs={12} lg={12}>
                                     <CardContent className={classes.cardContent}>
                                         <Typography component="h1" variant="h4" className={classes.judul}>
-                                            Jurusan Contoh Saja
+                                            {card.nama_jurusan}
                                         </Typography>
                                         <Typography>
-                                            jahdjhasdjhjkashdaskkjahjdhjakshdkjhjdhkjashdjhasjhdjkashkdjhaskjdhskjah
-                                            kashdkjhasdkjhaskjdhhasdhasdhkjajsadkadskjjaskdljklasdjk
-                                            kjashdkjahsdjhasdkjhsajdkjashd
+                                        {(card.deskripsi_jurusan).toString().substring(1,150)}...
                                         </Typography>
                                     </CardContent>
                                     <CardActions className={classes.link}>
-                                        <NavLink to="/detail-jurusan" >Read More </NavLink>
+                                        <NavLink to={{pathname:`/detail-jurusan/${card._id}`
+                                }} >Read More </NavLink>
                                     </CardActions>
                                 </Grid>
                                 <Grid item md={5} xs={12} lg={12} className={classes.gridMedia}>
                                     <CardMedia
                                         className={classes.cardMedia}
-                                        image={require("../../Images/sea.jpg")}
+                                        image={card.image_jurusan}
                                         title="jurusan title"
                                     />
                                 </Grid>

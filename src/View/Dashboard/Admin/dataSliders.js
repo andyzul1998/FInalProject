@@ -23,6 +23,14 @@ class Sliders extends React.Component {
     }
   }
 
+  hapus = (_id) => {
+    fetch(`http://apismk.herokuapp.com/slider/${_id}`, {
+      method: 'DELETE'
+    })
+      .then(response => response.json())
+      .then(json => console.log(json))
+  }
+
   componentDidMount() {
     fetch("http://apismk.herokuapp.com/slider") //fetch API Sliders
       .then(result => result.json())
@@ -63,27 +71,32 @@ class Sliders extends React.Component {
                 </TableRow>
               </TableHead>
               <TableBody style={{ backgroundColor: 'lightBlue' }}>
-                {sliders.map((item,i) => {
-                  return(
-                  <TableRow key={i}>
-                    <TableCell align="center" className={classes.textTable}>{i+=1}</TableCell>
-                    <TableCell align="center" className={classes.textTable}>{item.judul_slider}</TableCell>
-                    <TableCell align="center" className={classes.textTable}><img className={classes.img} src={`${item.image_slider}`} alt="banner" /></TableCell>
-                    <TableCell align="center">
-                      <Button
-                        variant="contained"
-                        color="secondary"
-                        startIcon={<DeleteIcon />}
+                {sliders.map((item, i) => {
+                  return (
+                    <TableRow key={i}>
+                      <TableCell align="center" className={classes.textTable}>{i += 1}</TableCell>
+                      <TableCell align="center" className={classes.textTable}>{item.judul_slider}</TableCell>
+                      <TableCell align="center" className={classes.textTable}><img className={classes.img} src={`${item.image_slider}`} alt="banner" /></TableCell>
+                      <TableCell align="center">
+                        <Button
+                          variant="contained"
+                          color="secondary"
+                          startIcon={<DeleteIcon />}
+                          onClick={() => this.hapus(item._id)}
 
-                      >Delete</Button>
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        startIcon={<EditIcon />}
-                      >Edit</Button>
-                    </TableCell>
-                  </TableRow>
-                )}
+                        >Delete</Button>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          startIcon={<EditIcon />}
+                        > <NavLink to={{
+                          pathname: `/dashboard-admin/data-sliders/edit-sliders/${item._id}`
+                        }}> EDIT
+                        </NavLink></Button>
+                      </TableCell>
+                    </TableRow>
+                  )
+                }
                 )}
               </TableBody>
             </Table>

@@ -23,6 +23,15 @@ class Sponsor extends React.Component{
       sponsor : []
     }
   }
+
+  hapus = (_id) => {
+    fetch(`http://apismk.herokuapp.com/sponsor/${_id}`, {
+      method: 'DELETE'
+    })
+      .then(response => response.json())
+      .then(json => console.log(json))
+  }
+
   componentDidMount() {
     fetch("http://apismk.herokuapp.com/sponsor") //fetch API Sponsor
     .then(result => result.json())
@@ -68,17 +77,21 @@ class Sponsor extends React.Component{
                   <TableCell align="center" className={classes.textTable}>{item.nama_sponsor}</TableCell>
                   <TableCell align="center" className={classes.textTable}><img className={classes.img} src={`${item.image_sponsor}`} alt="banner" /></TableCell>
                   <TableCell align="center">
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      startIcon={<DeleteIcon />}
+                  <Button
+                          variant="contained"
+                          color="secondary"
+                          startIcon={<DeleteIcon />}
+                          onClick={() => this.hapus(item._id)}
 
-                    >Delete</Button>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      startIcon={<EditIcon />}
-                    >Edit</Button>
+                        >Delete</Button>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          startIcon={<EditIcon />}
+                        > <NavLink to={{
+                          pathname: `/dashboard-admin/data-sponsor/edit-sponsor/${item._id}`
+                        }}> EDIT
+                        </NavLink></Button>
                   </TableCell>
                 </TableRow>
               )

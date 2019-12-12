@@ -10,7 +10,8 @@ export const Styles = theme => ({
         marginBottom: theme.spacing(4)
       },
     cardMedia: {
-        paddingTop: '56.25%', // 16:9
+        paddingTop: '56.25%',
+        height:200 // 16:9
       },
     cardContent: {
         flexGrow: 1,

@@ -24,6 +24,14 @@ class Testimoni extends React.Component{
     }
   }
 
+  hapus = (_id) => {
+    fetch(`http://apismk.herokuapp.com/testimoni/${_id}`, {
+      method: 'DELETE'
+    })
+      .then(response => response.json())
+      .then(json => console.log(json))
+  }
+  
   componentDidMount() {
     fetch("http://apismk.herokuapp.com/testimoni") //fetch API 
       .then(result => result.json())
@@ -73,17 +81,21 @@ class Testimoni extends React.Component{
                   <TableCell align="center" className={classes.textTable}>{item.deskripsi_testimoni}</TableCell>
                   <TableCell align="center" className={classes.textTable}><img className={classes.img} src={`${item.foto_alumni}`} alt="banner" /></TableCell>
                   <TableCell align="center">
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      startIcon={<DeleteIcon />}
+                  <Button
+                          variant="contained"
+                          color="secondary"
+                          startIcon={<DeleteIcon />}
+                          onClick={() => this.hapus(item._id)}
 
-                    >Delete</Button>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      startIcon={<EditIcon />}
-                    >Edit</Button>
+                        >Delete</Button>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          startIcon={<EditIcon />}
+                        > <NavLink to={{
+                          pathname: `/dashboard-admin/data-testimoni/edit-testimoni/${item._id}`
+                        }}> EDIT
+                        </NavLink></Button>
                   </TableCell>
                 </TableRow>
               )

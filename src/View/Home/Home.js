@@ -34,7 +34,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        fetch("http://apismk.herokuapp.com/slider") //fetch API Sliders
+        fetch("https://apismk.herokuapp.com/slider") //fetch API Sliders
             .then(result => result.json())
             .then(
                 (data) => {

@@ -27,6 +27,10 @@ import tambahSponsor from './Tambah Data/tambahSponsor'
 import tambahTestimoni from './Tambah Data/tambahTestimoni'
 import tambahMateri from './Tambah Data/tambahMateri'
 import editMurid from './Edit Data/editMurid'
+import editPrestasi from './Edit Data/editPrestasi'
+import editSliders from './Edit Data/editSliders'
+import editSponsor from './Edit Data/editSponsor'
+import editTestimoni  from './Edit Data/editTestimoni'
 
 class rootAdmin extends React.Component {
   render() {
@@ -116,6 +120,10 @@ class rootAdmin extends React.Component {
               <Route path="/dashboard-admin/data-sponsor/tambah-data-sponsor" component={tambahSponsor} />
               <Route path="/dashboard-admin/data-testimoni/tambah-data-testimoni" component={tambahTestimoni} />
               <Route path="/dashboard-admin/data-murid/edit-murid/:_id" component={editMurid} />
+              <Route path="/dashboard-admin/data-prestasi/edit-prestasi/:_id" component={editPrestasi} />
+              <Route path="/dashboard-admin/data-sliders/edit-sliders/:_id" component={editSliders} />
+              <Route path="/dashboard-admin/data-sponsor/edit-sponsor/:_id" component={editSponsor} />
+              <Route path="/dashboard-admin/data-testimoni/edit-testimoni/:_id" component={editTestimoni} />
             </Switch>
           </Grid>
         </Grid>

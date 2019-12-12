@@ -59,6 +59,9 @@ class News extends Component {
                                 image={item.image_news}
                                 title="Image title"
                             />
+                            <Typography>
+                                {item.author}
+                            </Typography>
                             <Moment format="D MMM YYYY" withTitle>
                                 {item.createdAt}
                             </Moment>
