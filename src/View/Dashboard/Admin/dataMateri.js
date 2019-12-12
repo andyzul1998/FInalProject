@@ -23,7 +23,7 @@ class Materi extends React.Component{
     }
   }
   componentDidMount() {
-    fetch("http://apismk.herokuapp.com/materi") //fetch API
+    fetch("https://apismk.herokuapp.com/materi") //fetch API
       .then(result => result.json())
       .then(
         (data) => {

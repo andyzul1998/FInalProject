@@ -43,7 +43,7 @@ class editPrestasi extends Component {
         data.append('nama_prestasi', this.state.nama_prestasi)
         data.append('deskripsi_prestasi', this.state.deskripsi_prestasi)
 
-        fetch(`http://apismk.herokuapp.com/prestasi/${this.state.id}`, {
+        fetch(`https://apismk.herokuapp.com/prestasi/${this.state.id}`, {
             method: 'PUT',
             body: data,
         }).then((response) => {
@@ -52,7 +52,7 @@ class editPrestasi extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://apismk.herokuapp.com/prestasi/${this.state.id}`) //fetch API 
+        fetch(`https://apismk.herokuapp.com/prestasi/${this.state.id}`) //fetch API 
           .then(result => result.json())
           .then(
             (data) => {

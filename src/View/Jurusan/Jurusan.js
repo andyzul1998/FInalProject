@@ -13,7 +13,7 @@ class Jurusan extends Component {
     }
 
     componentDidMount() {
-        fetch("http://apismk.herokuapp.com/jurusan") //fetch API News
+        fetch("https://apismk.herokuapp.com/jurusan") //fetch API News
             .then(result => result.json())
             .then(
                 (data) => {

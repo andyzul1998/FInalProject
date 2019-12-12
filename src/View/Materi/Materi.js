@@ -14,7 +14,7 @@ class News extends Component {
     }
 
     componentDidMount() {
-        fetch("http://apismk.herokuapp.com/slider")
+        fetch("http://apismk.herokuapp.com/materi")
         .then(res => res.json())
         .then(
             (result) => {
@@ -51,25 +51,25 @@ class News extends Component {
                     </Grid>
                     <Grid container spacing={2}>
                         {items.map((loh, i) => (
-                        <Grid item key={loh._id} xs={12} md={3}>
+                        <Grid item key={i} xs={12} md={3}>
                             <Card className={classes.card}>
                             <CardHeader
-                                title="Materi SMK TELKOM"
+                                title={items.judul_materi}
                                 subheader="materi Jurusan TKJ"
                             />
                             <CardMedia
                                 className={classes.cardMedia}
-                                // image={require("../../Images/11.jpg")}
+                                image={items.image_materi}
                                 title="Judul Gambar"
                             />
-                            <img src={`http://apismk.herokuapp.com/slider/${loh.image_slider}`}/>
                             <CardContent className={classes.cardContent}>
                                 <Typography>
-                                Materi TKJ , Multimedia,  content.
+                                {items.judul_materi}
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <NavLink to="/detail-materi">Read More </NavLink>
+                            <NavLink to={{pathname:`/detail-materi/${items._id}`
+                                }}>Read More </NavLink>
                             </CardActions>
                             </Card>
                         </Grid>

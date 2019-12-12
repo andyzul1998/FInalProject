@@ -26,7 +26,7 @@ class Murid extends React.Component {
   }
 
   hapus = (_id) => {
-    fetch(`http://apismk.herokuapp.com/siswa/${_id}`, {
+    fetch(`https://apismk.herokuapp.com/siswa/${_id}`, {
       method: 'DELETE'
     })
       .then(response => response.json())
@@ -34,7 +34,7 @@ class Murid extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://apismk.herokuapp.com/siswa") //fetch API Sliders
+    fetch("https://apismk.herokuapp.com/siswa") //fetch API Sliders
       .then(result => result.json())
       .then(
         (data) => {

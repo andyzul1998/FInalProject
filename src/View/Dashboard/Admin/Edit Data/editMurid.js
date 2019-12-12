@@ -60,7 +60,7 @@ class editMurid extends Component {
         data.append('foto_siswa', this.uploadInput.files[0])
         data.append('jurusan', this.state.jurusan)
 
-        fetch(`http://apismk.herokuapp.com/siswa/${this.state.id}`, {
+        fetch(`https://apismk.herokuapp.com/siswa/${this.state.id}`, {
             method: 'PUT',
             body: data,
         }).then((response) => {
@@ -72,7 +72,7 @@ class editMurid extends Component {
     }
 
     componentDidMount() {
-        fetch("http://apismk.herokuapp.com/jurusan") //fetch API Sliders
+        fetch("https://apismk.herokuapp.com/jurusan") //fetch API Sliders
           .then(result => result.json())
           .then(
             (data) => {
@@ -85,7 +85,7 @@ class editMurid extends Component {
               console.log(error)
             }
           );
-          fetch(`http://apismk.herokuapp.com/siswa/${this.state.id}`) //fetch API Sliders
+          fetch(`https://apismk.herokuapp.com/siswa/${this.state.id}`) //fetch API Sliders
           .then(result => result.json())
           .then(
             (data) => {

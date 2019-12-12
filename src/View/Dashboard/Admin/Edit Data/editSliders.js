@@ -41,7 +41,7 @@ class editSlider extends Component {
         data.append('image_slider', this.uploadInput.files[0])
         data.append('judul_slider', this.state.judul_slider)
 
-        fetch(`http://apismk.herokuapp.com/slider/${this.state.id}`, {
+        fetch(`https://apismk.herokuapp.com/slider/${this.state.id}`, {
             method: 'PUT',
             body: data,
         }).then((response) => {
@@ -50,7 +50,7 @@ class editSlider extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://apismk.herokuapp.com/slider/${this.state.id}`) //fetch API 
+        fetch(`https://apismk.herokuapp.com/slider/${this.state.id}`) //fetch API 
           .then(result => result.json())
           .then(
             (data) => {

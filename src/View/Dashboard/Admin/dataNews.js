@@ -24,7 +24,7 @@ class News extends React.Component{
   }
 
   componentDidMount() {
-    fetch("http://apismk.herokuapp.com/news") //fetch API
+    fetch("https://apismk.herokuapp.com/news") //fetch API
       .then(result => result.json())
       .then(
         (data) => {

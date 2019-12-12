@@ -5,8 +5,37 @@ import {Styles} from './Style';
 class Kontak extends Component {
     constructor(props){
         super(props);
+            this.state = {
+                nama:'',
+                email:'',
+                pesan:''
+            }
         
     }
+
+    changeHandler = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
+    }
+
+    handlerSimpan = (event) => {
+        event.preventDefault();
+
+        const data = new FormData();
+        data.append('nama_lengkap', this.state.nama)
+        data.append('email', this.state.email)
+        data.append('pesan', this.state.pesan)
+
+        fetch('https://apismk.herokuapp.com/kontak-kami', {
+            method: 'POST',
+            body: data,
+        }).then((response) => {
+            console.log(response)
+        }
+        ).then(json => console.log(json))
+
+        
+    }
+
     render() {
         
         const {classes}= this.props
@@ -46,6 +75,7 @@ class Kontak extends Component {
                                 <TextareaAutosize 
                                     className={classes.txtarea}
                                     aria-label="pesan" 
+                                    name='pesan'
                                     rows={3} 
                                     placeholder="Masukan Pesan" />
                                 </Grid>
@@ -53,10 +83,13 @@ class Kontak extends Component {
                             <Button
                                 type="submit"
                                 fullWidth
+                                
                                 variant="contained"
                                 color="primary"
                                 className={classes.submit}
+                                onClick={this.handlerSimpan}
                             >
+                                
                                 Submit
                             </Button>
                             

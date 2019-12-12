@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import rootWeb from '../src/Component/AppBar/App'
 import rootAdmin from '../src/View/Dashboard/Admin/Admin'
+import Chat from './Component/Chat/Chat'
 
 
 class App extends Component {
     render() {
         return (
+            <div>
+            <Chat/>
             <Router>
                 <Switch>
                     <Route  exact path="/dashboard-admin" component={rootAdmin}/> 
@@ -20,8 +23,10 @@ class App extends Component {
                     <Route path="/dashboard-admin/data-promo" component={rootAdmin} />
                     <Route path="/dashboard-admin/data-testimoni" component={rootAdmin} />
                     <Route path="/" component={rootWeb}/>
+                    
                 </Switch>    
             </Router>
+            </div>
         );
     }
 }

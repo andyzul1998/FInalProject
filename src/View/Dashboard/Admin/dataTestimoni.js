@@ -25,7 +25,7 @@ class Testimoni extends React.Component{
   }
 
   hapus = (_id) => {
-    fetch(`http://apismk.herokuapp.com/testimoni/${_id}`, {
+    fetch(`https://apismk.herokuapp.com/testimoni/${_id}`, {
       method: 'DELETE'
     })
       .then(response => response.json())
@@ -33,7 +33,7 @@ class Testimoni extends React.Component{
   }
   
   componentDidMount() {
-    fetch("http://apismk.herokuapp.com/testimoni") //fetch API 
+    fetch("https://apismk.herokuapp.com/testimoni") //fetch API 
       .then(result => result.json())
       .then(
         (data) => {

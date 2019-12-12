@@ -41,7 +41,7 @@ class editSponsor extends Component {
         data.append('image_sponsor', this.uploadInput.files[0])
         data.append('nama_sponsor', this.state.nama_sponsor)
 
-        fetch(`http://apismk.herokuapp.com/sponsor/${this.state.id}`, {
+        fetch(`https://apismk.herokuapp.com/sponsor/${this.state.id}`, {
             method: 'PUT',
             body: data,
         }).then((response) => {
@@ -50,7 +50,7 @@ class editSponsor extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://apismk.herokuapp.com/sponsor/${this.state.id}`) //fetch API 
+        fetch(`https://apismk.herokuapp.com/sponsor/${this.state.id}`) //fetch API 
             .then(result => result.json())
             .then(
                 (data) => {

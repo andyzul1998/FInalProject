@@ -24,7 +24,7 @@ class Prestasi extends React.Component {
   }
 
   hapus = (_id) => {
-    fetch(`http://apismk.herokuapp.com/prestasi/${_id}`, {
+    fetch(`https://apismk.herokuapp.com/prestasi/${_id}`, {
       method: 'DELETE'
     })
       .then(response => response.json())
@@ -32,7 +32,7 @@ class Prestasi extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://apismk.herokuapp.com/prestasi") //fetch API Sliders
+    fetch("https://apismk.herokuapp.com/prestasi") //fetch API Sliders
       .then(result => result.json())
       .then(
         (data) => {

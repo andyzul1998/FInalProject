@@ -13,7 +13,7 @@ class DetailJurusan extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://apismk.herokuapp.com/jurusan/${this.state.id}`)
+        fetch(`https://apismk.herokuapp.com/jurusan/${this.state.id}`)
           .then(res => res.json())
           .then(
             (data) => {

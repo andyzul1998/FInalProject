@@ -14,7 +14,7 @@ class News extends Component {
     }
 
     componentDidMount() {
-        fetch("http://apismk.herokuapp.com/news") //fetch API News
+        fetch("https://apismk.herokuapp.com/news") //fetch API News
             .then(result => result.json())
             .then(
                 (data) => {
@@ -51,7 +51,7 @@ class News extends Component {
                         {news.map((item,i) => (
                         <Grid item key={i} xs={12} md={3}>
                             <Card className={classes.card}>
-                            <CardHeader
+                            <CardHeader style={{height:100}}
                                 title={item.judul_news}
                             />
                             <CardMedia

@@ -25,7 +25,7 @@ class Sponsor extends React.Component{
   }
 
   hapus = (_id) => {
-    fetch(`http://apismk.herokuapp.com/sponsor/${_id}`, {
+    fetch(`https://apismk.herokuapp.com/sponsor/${_id}`, {
       method: 'DELETE'
     })
       .then(response => response.json())
@@ -33,7 +33,7 @@ class Sponsor extends React.Component{
   }
 
   componentDidMount() {
-    fetch("http://apismk.herokuapp.com/sponsor") //fetch API Sponsor
+    fetch("https://apismk.herokuapp.com/sponsor") //fetch API Sponsor
     .then(result => result.json())
     .then(
         (data) => {

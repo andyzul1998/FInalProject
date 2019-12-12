@@ -43,7 +43,7 @@ class editTestimoni extends Component {
         data.append('nama_alumni', this.state.nama_testimoni)
         data.append('deskripsi_testimoni', this.state.deskripsi_testimoni)
 
-        fetch(`http://apismk.herokuapp.com/testimoni/${this.state.id}`, {
+        fetch(`https://apismk.herokuapp.com/testimoni/${this.state.id}`, {
             method: 'PUT',
             body: data,
         }).then((response) => {
@@ -52,7 +52,7 @@ class editTestimoni extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://apismk.herokuapp.com/testimoni/${this.state.id}`) //fetch API 
+        fetch(`https://apismk.herokuapp.com/testimoni/${this.state.id}`) //fetch API 
           .then(result => result.json())
           .then(
             (data) => {

@@ -47,7 +47,7 @@ class Home extends Component {
                     console.log(error)
                 }
             );
-        fetch("http://apismk.herokuapp.com/sponsor") //fetch API Sponsor
+        fetch("https://apismk.herokuapp.com/sponsor") //fetch API Sponsor
             .then(result => result.json())
             .then(
                 (data) => {
@@ -60,7 +60,7 @@ class Home extends Component {
                     console.log(error)
                 }
             );
-        fetch("http://apismk.herokuapp.com/fasilitas") //fetch API Sponsor
+        fetch("https://apismk.herokuapp.com/fasilitas") //fetch API Sponsor
             .then(result => result.json())
             .then(
                 (data) => {
@@ -73,7 +73,7 @@ class Home extends Component {
                     console.log(error)
                 }
             );
-        fetch("http://apismk.herokuapp.com/news") //fetch API News
+        fetch("https://apismk.herokuapp.com/news") //fetch API News
             .then(result => result.json())
             .then(
                 (data) => {
@@ -86,7 +86,7 @@ class Home extends Component {
                     console.log(error)
                 }
             );
-        fetch("http://apismk.herokuapp.com/jurusan") //fetch API News
+        fetch("https://apismk.herokuapp.com/jurusan") //fetch API News
             .then(result => result.json())
             .then(
                 (data) => {

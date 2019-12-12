@@ -24,7 +24,7 @@ class Sliders extends React.Component {
   }
 
   hapus = (_id) => {
-    fetch(`http://apismk.herokuapp.com/slider/${_id}`, {
+    fetch(`https://apismk.herokuapp.com/slider/${_id}`, {
       method: 'DELETE'
     })
       .then(response => response.json())
@@ -32,7 +32,7 @@ class Sliders extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://apismk.herokuapp.com/slider") //fetch API Sliders
+    fetch("https://apismk.herokuapp.com/slider") //fetch API Sliders
       .then(result => result.json())
       .then(
         (data) => {

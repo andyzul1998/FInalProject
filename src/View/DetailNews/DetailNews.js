@@ -13,7 +13,7 @@ class DetailNews extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://apismk.herokuapp.com/news/${this.state.id}`)
+        fetch(`https://apismk.herokuapp.com/news/${this.state.id}`)
           .then(res => res.json())
           .then(
             (data) => {

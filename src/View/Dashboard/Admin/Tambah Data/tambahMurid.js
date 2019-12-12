@@ -70,7 +70,7 @@ class tambahMurid extends Component {
     }
 
     componentDidMount() {
-        fetch("http://apismk.herokuapp.com/jurusan") //fetch API Sliders
+        fetch("https://apismk.herokuapp.com/jurusan") //fetch API Sliders
           .then(result => result.json())
           .then(
             (data) => {
