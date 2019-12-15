@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Grid, Typography, withStyles, Box, Paper } from '@material-ui/core'
+import { Container, Grid, Typography, withStyles, Box, Paper, Button } from '@material-ui/core'
 import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -112,7 +112,19 @@ class Home extends Component {
             items: 1,
             loop: true,
             autoplay: true,
+            animateIn: 'zoomIn',
+            animateOut:'rollOut'
         }
+
+        const optionJurusan = {
+            items: 1,
+            loop: true,
+            dots:false,
+            autoplay: true,
+            animateIn: 'lightSpeedIn',
+            animateOut:'lightSpeedOut'
+        }
+
         const settings = {
             dots: true,
             infinite: true,
@@ -144,7 +156,7 @@ class Home extends Component {
                     >
                         <Fade in={open}>
                             <div className={classes.paper}>
-                                <img src={require('../../Images/logo-telkom.png')} alt="banner" />
+                                <img className={classes.modal_img} src={require('../../Images/Modal-promo.png')} alt="modal" />
                             </div>
                         </Fade>
                     </Modal>
@@ -154,33 +166,24 @@ class Home extends Component {
                         <OwlCaraousel options={optionSlider}>
                             {sliders.map((item, i) => (
                                 <div style={{ height: '-moz-fit-content' }}>
-                                    <Img key={i} style={{ height: '350px' }} src={`${item.image_slider}`} />
+                                    <Img key={i} className={classes.slider_img} src={`${item.image_slider}`} />
                                 </div>
                             ))}
                         </OwlCaraousel>
                     )}
                 </div>
-                {/* <div style={{ height: '-moz-fit-content' }}>
-                    <Slider {...settings} className={classes.gridSlider}>
-                        {sliders.map((item, i) => (
-                            <div>
-                                <Img key={i} className={classes.slider} src={`${item.image_slider}`} />
-                            </div>
-                        ))}
-                    </Slider>
-                </div> */}
                 <Grid container spacing={2} style={{ marginTop: 15 }}>
                     <Grid item md={4} xs={12}>
                         <Typography component="h1" variant="h4" style={{ borderRight: '3px solid red' }}>
                             TENTANG SEKOLAH KAMI
-                            </Typography>
+                        </Typography>
                         <Typography component="h1" align="justify" style={{ marginTop: 15 }}>
                             Kami adalah sekolah yang bergerak dibidang teknologi informasi, kami sudah berdiri sejak tahun 100 masehi dan masih berdiri
                             kokoh hingga saat ini
                             </Typography>
                     </Grid>
                     <Grid item md={8} xs={12}>
-                        <img style={{ borderRadius: 10 }} className={classes.slider} src={require('../../Images/banner-slider.jpg')} alt="banner" />
+                        <img className={classes.slider_img} src={require('../../Images/sekolah.jpg')} alt="sekolah" />
                     </Grid>
                 </Grid>
                 <div className={classes.txtJurusan}>
@@ -191,21 +194,42 @@ class Home extends Component {
                         Kami memiliki beberapa Program Studi unggulan yang sudah teruji dan kompenten di bidangnya
                     </Typography>
                 </div>
+
                 {jurusan.length && (
-                    <OwlCaraousel options={optionSlider}>
+                    <OwlCaraousel options={optionJurusan}>
                         {jurusan.map((item, i) => (
-                            <NavLink className={classes.linkJurusan} to={{pathname:`/detail-jurusan/${item._id}`}}>
-                            <div className={classes.divJurusan}>
-                                <Img key={i} className={classes.jurusanImg} src={`${item.image_jurusan}`} />
-                                <Typography component="h1" variant="h5" align="center">
-                                    {item.nama_jurusan}
-                                </Typography>
-                            </div>
-                            </NavLink>
-                            
+                            <Paper style={{ padding: 10 }}>
+                                <Grid container spacing={3}>
+                                    <Grid item md={8} >
+                                        <Img key={i} className={classes.jurusanImg} src={`${item.image_jurusan}`} />
+                                    </Grid>
+                                    <Grid item md={4} >
+                                        <Box style={{ borderLeft: '3px solid red' }}>
+                                            <Typography component="h1" variant="h4" align="left" className={classes.txt_jurusan}>
+                                                {item.nama_jurusan}
+                                            </Typography>
+                                        </Box>
+                                        <Box>
+                                            <Typography component="h1" variant="h5" align="left" className={classes.txt_jurusan_deskripsi}>
+                                                {(item.deskripsi_jurusan).toString().substring(0, 130)} ...
+                                            </Typography>
+                                        </Box>
+                                        <Box style={{display:'flex' , justifyContent:'end',height:150,alignItems:'end'}}>
+                                            <NavLink className={classes.linkJurusan} to={{ pathname: `/detail-jurusan/${item._id}` }}>
+                                                <Button variant="contained" color="primary">
+                                                    SELENGKAPNYA
+                                                </Button>
+                                            </NavLink>
+                                        </Box>
+                                    </Grid>
+                                </Grid>
+
+                            </Paper>
                         ))}
                     </OwlCaraousel>
-                    )}
+
+                )}
+
                 <Grid container spacing={4} style={{ marginTop: 20 }}>
                     <Grid item md={8} xs={12} >
                         <Slider {...settings} >

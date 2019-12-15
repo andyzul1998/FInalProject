@@ -1,4 +1,4 @@
-import Images from '../../Images/lapt.png'
+
 export const Styles = theme => ({
     gridSlider: {
         height: 'fit-content'
@@ -7,6 +7,17 @@ export const Styles = theme => ({
         width: '100%',
         height: '60vh',
         borderRadius: 10
+    },
+    slider_img: {
+        height:350,
+        borderRadius:10,
+        width:'100%'
+    },
+
+    modal_img:{
+        height:400,
+        width:400,
+        borderRadius:10 
     },
     mitra: {
         height: 100,
@@ -71,7 +82,7 @@ export const Styles = theme => ({
         height: '-moz-fit-content'
     },
     jurusanImg:{
-        height:500,
+        height:'60vh',
         borderRadius:15
     },
     txtJurusan:{
@@ -81,5 +92,10 @@ export const Styles = theme => ({
         color: 'white',
         borderRadius:15
     },
-
+    txt_jurusan:{
+        marginLeft:15,
+    },
+    txt_jurusan_deskripsi:{
+        marginTop:20
+    },
 }); 
